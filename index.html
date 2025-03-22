@@ -35,3 +35,53 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background: #333;
+    padding: 10px;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+.tab-content {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* script.js */
+document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab-link");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function (event) {
+            event.preventDefault();
+            const target = this.getAttribute("data-tab");
+            
+            contents.forEach(content => {
+                content.classList.remove("active");
+            });
+            
+            document.getElementById(target).classList.add("active");
+        });
+    });
+});
